@@ -26,16 +26,20 @@ const client = new Client({
 });
 
 // Evento disparado quando precisa autenticar via QR Code
-client.on('qr', (qr) => {
+//client.on('qr', (qr) => {
   // Gera e exibe o QR Code no terminal
-  qrcode.generate(qr, { small: true });
-});
+  //qrcode.generate(qr, { small: true });
+//});
 
 // Evento disparado quando o cliente está pronto
 client.on('ready', async () => {
   console.log('✅ Conectado ao WhatsApp');
   // Inicia o loop principal de envio de mensagens
   await loopDeEnvio();
+  setInterval(() => {
+    console.log("⏳ Bot ativo no Railway...");
+  }, 60000);
+  
 });
 
 // === Função principal - Loop infinito de envio ===
